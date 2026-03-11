@@ -6,7 +6,7 @@ on:
       - main
 
 permissions:
-  contents: write  # 需要推 tag
+  contents: write  # 推 tag 需要
 
 jobs:
   build-and-push:
@@ -16,7 +16,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # 確保能取得所有 tag
+          fetch-depth: 0
 
       # 1) 自動計算下一個 semver 版本
       - name: Get next version
@@ -25,10 +25,10 @@ jobs:
         with:
           scheme: semver
           increment: patch
-          prefix: 'v'
+          # 不設 prefix → 就是 pure 例如 1.0.0, 1.0.1
 
       - name: Set VERSION env
-        run: echo "VERSION=${{ steps.version.outputs.v-version }}" >> $GITHUB_ENV
+        run: echo "VERSION=${{ steps.version.outputs.version }}" >> $GITHUB_ENV
 
       # 2) 設定 Buildx
       - name: Setup Docker Buildx
