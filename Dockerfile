@@ -2,11 +2,9 @@ FROM tensorflow/tensorflow:2.14.0-gpu
 
 WORKDIR /app
 
-COPY requirements.txt requirements.txt
-
-RUN pip install --no-cache-dir --upgrade -r requirements.txt
-
 COPY . .
+
+RUN pip install --no-cache-dir --upgrade -m requirements.txt
 
 EXPOSE 8000
 
