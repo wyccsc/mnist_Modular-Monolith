@@ -2,9 +2,9 @@ FROM tensorflow/tensorflow:2.14.0-gpu
 
 WORKDIR /app
 
-COPY requirements.txt /app/requirements.txt
+COPY requirements.txt requirements.txt
 
-RUN pip install --no-cache-dir --upgrade -r /app/app/requirements.txt
+RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
 COPY . .
 
