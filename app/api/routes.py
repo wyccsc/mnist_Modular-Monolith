@@ -11,6 +11,10 @@ router = APIRouter()
 templates = Jinja2Templates(directory="app/templates")
 
 
+@router.get("/health")
+async def health_check():
+    return {"status": "ok"}
+
 @router.get("/", response_class=HTMLResponse)
 async def index(request: Request):
 
